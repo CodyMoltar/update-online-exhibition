@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update 2022 - Online Exhibition</title>
+
+    <link rel="stylesheet" href="./style/style.css">
+
+    <script src="./js/aframe.min.js"></script>
+    <script src="./js/components.js"></script>
+    <script defer src="./js/script.js"></script>
+
+</head>
+<body>
+
+    <a-scene>
+
+        <a-sky color="#ECECEC"></a-sky>
+        <a-entity position="0 0 -2">
+
+            <a-plane 
+                videoplayer="earth"
+                position="0 0 -1" 
+                rotation="-90 0 0" 
+                width="1" 
+                height="1"  
+            ></a-plane>
+
+            <a-video
+                id="earth" 
+                position="0 2 -2" 
+                rotation="0 0 0" 
+                width="1.6" 
+                height="0.9" 
+                src="./media/earth-loop.mp4"
+                videoloop
+            ></a-video>
+
+        </a-entity>
+            
+      </a-scene>
+
+</body>
+</html>
