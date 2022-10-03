@@ -15,10 +15,10 @@
 </head>
 <body>
 
-    <a-scene light="defaultLightsEnabled: true">
+    <a-scene light="defaultLightsEnabled: false" fog="type: linear; color: #fff; far:100">
 
         <a-assets>
-                      
+            
         </a-assets>
 
 
@@ -29,18 +29,23 @@
         <a-plane 
             position="0 0 0" 
             rotation="-90 0 0" 
-            width="30" 
-            height="30" 
+            width="400" 
+            height="400" 
             color="#fff"
             material="
-                src: ./media/floor/Stone_Floor_007_basecolor.jpg;
-                normalMap: ./media/floor/Stone_Floor_007_normal.jpg;
-                repeat: 10 10
+                src: ./media/concrete/Concrete_019_BaseColorLighterer.jpg;
+                normalMap: ./media/concrete/Concrete_019_Normal.jpg;
+                repeat: 100 100
             "
         ></a-plane>
 
+        <a-entity 
+            position="0 0 -5"
+            gltf-model="url(./media/cube.glb)"
+            scale="1 1 1"
+        ></a-entity>
 
-        
+        <a-entity light="type: ambient; color: #fff"></a-entity>
 
         <!-- <a-entity
             position="0 0 0"
