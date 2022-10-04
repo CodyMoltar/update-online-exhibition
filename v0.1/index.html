@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="./style/style.css">
+
+    <script src="./js/aframe.min.js"></script>
+    <script src="./js/components.js"></script>
+
+</head>
+<body>
+
+    <a-scene light="defaultLightsEnabled: false" fog="type: linear; color: #fff; far:100">
+
+        <a-sky color="#ECECEC"></a-sky>
+
+        <a-entity  rotation="0 0 0" gamepad-controls="" trackpad-controls="" keyboard-controls="" touch-controls="">
+            <a-entity positionlogger id="rig" camera="" position="0 1.6 0" look-controls="pointerLockEnabled: true; reverseMouseDrag: false;" rotation="" look-controls wasd-controls>
+            </a-entity>
+        </a-entity>
+
+        <a-plane 
+            position="0 0 0" 
+            rotation="-90 0 0" 
+            width="400" 
+            height="400" 
+            color="#fff"
+            material="
+                src: ./media/textures/concrete/Concrete_019_BaseColorLighterer.jpg;
+                normalMap: ./media/textures/concrete/Concrete_019_Normal.jpg;
+                repeat: 100 100
+            "
+        ></a-plane>
+        <a-entity light="type: ambient; color: #fff"></a-entity>
+
+        <a-entity rotation="0 0 0" position="0">
+
+            <a-entity position="0 0 -15">
+                <a-plane
+                    videoactivator="color:yellow; target:wall"
+                    position="0 0 0" 
+                    rotation="-90 0 0"  
+                ></a-plane>
+                <a-video
+                    id="wall" 
+                    position="0 3 -4" 
+                    rotation="0 0 0" 
+                    width="8" 
+                    height="4.5"
+                    videoloop
+                ></a-video>
+            </a-entity>
+    
+        </a-entity>
+
+    </a-scene>
+    
+</body>
+</html>
