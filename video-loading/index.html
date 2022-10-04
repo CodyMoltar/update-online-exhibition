@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./style/style.css">
 
     <script src="./js/aframe.min.js"></script>
+    <script src="./js/mouselook.js"></script>
     <script src="./js/components.js"></script>
     <script defer src="./js/script.js"></script>
 
@@ -25,27 +26,103 @@
             </a-entity>
         </a-entity>
 
-        <a-entity position="0 0 -50">
+        <a-entity rotation="0 90 0" position="50 0 -50">
 
-            <a-plane
-                videoactivator="color:yellow; target:earth"
-                videoplayer="earth"
-                position="0 0 0" 
-                rotation="-90 0 0"  
-            ></a-plane>
-
-            <a-video
-                id="earth" 
-                position="0 3 -8" 
-                rotation="0 0 0" 
-                width="8" 
-                height="4.5"
-                videoloop
-            ></a-video>
+            <a-entity position="0 0 -50">
+                <a-plane
+                    videoactivator="color:yellow; target:earth"
+                    position="0 0 0" 
+                    rotation="-90 0 0"  
+                ></a-plane>
+                <a-video
+                    id="earth" 
+                    position="0 3 -8" 
+                    rotation="0 0 0" 
+                    width="8" 
+                    height="4.5"
+                    videoloop
+                ></a-video>
+            </a-entity>
+    
+            <a-entity
+                position="20 0 -50"
+                rotation="0 0 0"
+            >
+                <a-plane
+                    videoactivator="color:yellow; target:jelly"
+                    position="0 0 0" 
+                    rotation="-90 0 0"  
+                ></a-plane>
+                <a-video
+                    id="jelly" 
+                    position="0 3 -8" 
+                    rotation="0 0 0" 
+                    width="8" 
+                    height="4.5"
+                    videoloop
+                ></a-video>
+            </a-entity>
+    
+            <a-entity
+                position="40 0 -50"
+                rotation="0 0 0"
+            >
+                <a-plane
+                    videoactivator="color:yellow; target:woman"
+                    position="0 0 0" 
+                    rotation="-90 0 0"  
+                ></a-plane>
+                <a-video
+                    id="woman" 
+                    position="0 3 -8" 
+                    rotation="0 0 0" 
+                    width="8" 
+                    height="4.5"
+                    videoloop
+                ></a-video>
+            </a-entity>
+    
+             <a-entity
+                position="-20 0 -50"
+                rotation="0 0 0"
+            >
+                <a-plane
+                    videoactivator="color:yellow; target:wall"
+                    position="0 0 0" 
+                    rotation="-90 0 0"  
+                ></a-plane>
+                <a-video
+                    id="wall" 
+                    position="0 3 -8" 
+                    rotation="0 0 0" 
+                    width="8" 
+                    height="4.5"
+                    videoloop
+                ></a-video>
+            </a-entity>
+    
+            <a-entity
+                position="60 0 -50"
+                rotation="0 0 0"
+            >
+                <a-plane
+                    videoactivator="color:yellow; target:a"
+                    position="0 0 0" 
+                    rotation="-90 0 0"  
+                ></a-plane>
+                <a-video
+                    id="a" 
+                    position="0 3 -8" 
+                    rotation="0 0 0" 
+                    width="8" 
+                    height="4.5"
+                    videoloop
+                ></a-video>
+            </a-entity>
 
         </a-entity>
-            
-      </a-scene>
+
+    </a-scene>
 
 </body>
 </html>
