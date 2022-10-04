@@ -13,9 +13,9 @@ AFRAME.registerComponent('videoloop', {
     schema: {type: 'int', default: 5},
     init: function () {
         // Set the static image source of the plane
-        this.staticImageURL = '../media/' + this.el.id + ".png"
+        this.staticImageURL = './media/' + this.el.id + ".png"
         this.el.setAttribute('src', this.staticImageURL);
-        this.videoLoopURL = '../media/' + this.el.id + "-loop.mp4"
+        this.videoLoopURL = './media/' + this.el.id + "-loop.mp4"
 
         this.triggerDistance = 40;
 
@@ -60,7 +60,7 @@ AFRAME.registerComponent('videoactivator', {
         this.el.setAttribute('height', this.height)
 
         this.videos = document.getElementsByTagName('a-video');
-        this.videoURL = '../media/' + this.data.target + ".mp4"
+        this.videoURL = './media/' + this.data.target + ".mp4"
         this.videoLoaded = false;
 
     },
