@@ -59,53 +59,32 @@ AFRAME.registerComponent('videoactivator', {
         this.el.setAttribute('width', this.width)
         this.el.setAttribute('height', this.height)
 
+        this.videos = document.getElementsByTagName('a-video');
+        this.videoURL = '../media/' + this.data.target + ".mp4"
+        this.videoLoaded = false;
+
     },
     tick: function(){
 
-        this.planePosition = this.el.getObject3D("mesh").getWorldPosition(new THREE.Vector3());
-        
-        this.distance = this.planePosition.distanceTo(cameraPosition)
+        if(!this.videoLoaded){
 
-        if(this.distance < this.width && this.distance < this.height){
-            
-            
+            this.planePosition = this.el.getObject3D("mesh").getWorldPosition(new THREE.Vector3());
+            this.distance = this.planePosition.distanceTo(cameraPosition)
+    
+            if(this.distance < this.width && this.distance < this.height){
+                for(let i = 0; i < this.videos.length; i++){
+                    if(this.videos[i].id === this.data.target){
+                        this.videos[i].setAttribute('src', this.videoURL);
+                    }
+                }
+
+                this.videoLoaded = true;
+    
+            }
 
         }
 
+        
+
     }
 })
-
-// AFRAME.registerComponent('videoplayer', {
-//     schema: {type: 'string', default:'none'},
-//     init: function () {
-//         this.cam = document.getElementById('rig');
-//         this.plane = this.el.object3D.getWorldPosition(new THREE.Vector3());
-//         this.width = this.el.getAttribute('geometry').width;
-//         this.hasBeenRestarted = false;
-        
-//     },
-//     tick: function () {
-//         let camPos = this.cam.object3D.getWorldPosition(new THREE.Vector3());
-//         let distance = camPos.distanceTo(this.plane);
-//         if (distance < this.width/2) {
-//             for(let i = 0; i < videos.length; i++){
-//                 if(videos[i].id == this.data){
-//                     videos[i].muted = false;
-//                     if(!this.hasBeenRestarted){
-//                         videos[i].pause();
-//                         videos[i].currentTime = 0;
-//                         videos[i].load();
-//                         this.hasBeenRestarted = true;
-//                     }
-//                 }
-//             }
-//         }else{
-//             for(let i = 0; i < videos.length; i++){
-//                 if(videos[i].id == this.data){
-//                     videos[i].muted = true;
-//                 }
-//             }
-//         }  
-//     },
-    
-// });
