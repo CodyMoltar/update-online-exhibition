@@ -72,3 +72,71 @@ AFRAME.registerComponent('videoactivator', {
         }
     }
 })
+
+AFRAME.registerComponent('2dvideoplayer', {
+    schema:{
+        color: {default: '#fff'},
+        target: {type: 'string', default: 'none'},
+        videowidth: {default: 8},
+        videoheight: {default: 4.5},
+        planewidth: {default:2},
+        planeheight: {default:2},
+        triggerdistance: {default: 5}
+    },
+    init: function(){
+        
+        // Create the video entity
+        this.video = document.createElement('a-video');
+        this.el.appendChild(this.video);
+        // Set the default image source, width, height, position and rotation
+        this.video.setAttribute('src', './media/videos/' + this.data.target + '.png');
+        this.video.setAttribute('width', this.data.videowidth);
+        this.video.setAttribute('height', this.data.videoheight);
+        this.video.setAttribute('position', { x: 0, y: 3, z: 0 });
+        this.video.setAttribute('rotation', '20,0,0');
+
+        // Create the plane entity
+        this.plane = document.createElement('a-plane');
+        this.el.appendChild(this.plane);
+        // Set the default image source, widht, height, position and rotation
+        this.plane.setAttribute(
+            'material', {
+                src: './media/textures/feet.png',
+                transparent: true
+            })
+        this.plane.setAttribute('width', '2');
+        this.plane.setAttribute('height', '2');
+        this.plane.setAttribute('position', { x: 0, y: 0.01, z: 3 });
+        this.plane.setAttribute('rotation', '-90,0,0');
+
+        this.videoloaded = false;
+        this.looploaded = false;
+
+        this.videoURL = './media/videos/' + this.data.target + '.mp4'
+        this.loopURL = './media/videos/' + this.data.target + '-loop.mp4'
+
+    },
+    tick: function(){
+
+        if(!this.videoloaded){
+
+            this.planePosition = this.plane.getObject3D("mesh").getWorldPosition(new THREE.Vector3());
+            this.distance = this.planePosition.distanceTo(cameraPosition);
+
+            if(!this.looploaded){
+                if(this.distance < this.data.triggerdistance && this.distance < this.data.triggerdistance){
+                    console.log('loading loop..');
+                    this.video.setAttribute('src', this.loopURL);
+                    this.looploaded = true;
+                }
+            }
+            else if(this.distance < this.data.planewidth && this.distance < this.data.planeheight){
+                console.log('loading video...');
+                this.video.setAttribute('src', this.videoURL);
+                this.videoloaded = true;
+            }
+
+        }
+
+    }
+})
