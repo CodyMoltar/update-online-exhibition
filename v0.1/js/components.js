@@ -84,7 +84,12 @@ AFRAME.registerComponent('2dvideoplayer', {
         triggerdistance: {default: 5}
     },
     init: function(){
-        
+
+        this.frame = document.createElement('a-entity');
+        this.el.appendChild(this.frame);
+        this.frame.setAttribute('scale', '0.1 0.1 0.1');
+        this.frame.setAttribute('rotation', '0,0,-90');
+        this.frame.setAttribute('gltf-model', 'url(./media/3dmodels/frame.glb)')
         // Create the video entity
         this.video = document.createElement('a-video');
         this.el.appendChild(this.video);
