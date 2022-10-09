@@ -81,15 +81,25 @@ AFRAME.registerComponent('2dvideoplayer', {
         videoheight: {default: 4.5},
         planewidth: {default:2},
         planeheight: {default:2},
-        triggerdistance: {default: 5}
+        triggerdistance: {default: 20}
     },
     init: function(){
 
+        // Create the frame entity
         this.frame = document.createElement('a-entity');
         this.el.appendChild(this.frame);
-        this.frame.setAttribute('scale', '0.1 0.1 0.1');
-        this.frame.setAttribute('rotation', '0,0,-90');
+        this.frame.setAttribute('scale', { x: 0.090, y: 0.115, z: 0.100});
+        this.frame.setAttribute('rotation', { x: 20, y: 0, z: -90 });
+        this.frame.setAttribute('position', { x: -4.359, y: 3, z: -0.07 });
         this.frame.setAttribute('gltf-model', 'url(./media/3dmodels/frame.glb)')
+
+        // this.frame = document.createElement('a-obj-model');
+        // this.el.appendChild(this.frame);
+        // this.frame.setAttribute('scale', { x: 0.090, y: 0.115, z: 0.100});
+        // this.frame.setAttribute('rotation', { x: 20, y: 0, z: -90 });
+        // this.frame.setAttribute('position', { x: -4.359, y: 3, z: -0.07 });
+        // this.frame.setAttribute('src', './media/3dmodels/frame.obj')
+
         // Create the video entity
         this.video = document.createElement('a-video');
         this.el.appendChild(this.video);
@@ -111,7 +121,7 @@ AFRAME.registerComponent('2dvideoplayer', {
             })
         this.plane.setAttribute('width', '2');
         this.plane.setAttribute('height', '2');
-        this.plane.setAttribute('position', { x: 0, y: 0.01, z: 3 });
+        this.plane.setAttribute('position', { x: 0, y: 0.01, z: 5 });
         this.plane.setAttribute('rotation', '-90,0,0');
 
         this.videoloaded = false;

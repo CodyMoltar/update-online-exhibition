@@ -37,15 +37,36 @@
         ></a-plane>
         <a-entity light="type: ambient; color: #fff"></a-entity>
 
-
-        <a-entity rotation="0 0 -90" position="0">
+        <a-entity position="0 0 -30">
 
             <a-entity 
                 2dvideoplayer="target:wall"
-                position="0 0 -10"
+                position="-10 0 -10"
+                rotation="0 90 0"
             ></a-entity>
-    
+
+            <a-entity 
+                2dvideoplayer="target:jelly"
+                position="-10 0 -30"
+                rotation="0 90 0"
+            ></a-entity>
+
+            <a-entity 
+                2dvideoplayer="target:woman"
+                position="10 0 -10"
+                rotation="0 -90 0"
+            ></a-entity>
+
+            <a-entity 
+                2dvideoplayer="target:earth"
+                position="10 0 -30"
+                rotation="0 -90 0"
+            ></a-entity>
+
         </a-entity>
+
+        
+    
 
     </a-scene>
     
