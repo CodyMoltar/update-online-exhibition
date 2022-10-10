@@ -85,6 +85,12 @@ AFRAME.registerComponent('2dvideoplayer', {
     },
     init: function(){
 
+        // add the video as a video element to control playback
+        this.videoSource = document.createElement('video');
+        this.videoSource.id = this.data.target;
+        // this.video.onloadeddata = this.onLoaded.bind(this);
+        document.body.appendChild(this.videoSource);
+
         // Create the frame entity
         this.frame = document.createElement('a-entity');
         this.el.appendChild(this.frame);
@@ -138,20 +144,49 @@ AFRAME.registerComponent('2dvideoplayer', {
             this.planePosition = this.plane.getObject3D("mesh").getWorldPosition(new THREE.Vector3());
             this.distance = this.planePosition.distanceTo(cameraPosition);
 
-            if(!this.looploaded){
-                if(this.distance < this.data.triggerdistance && this.distance < this.data.triggerdistance){
-                    console.log('loading loop..');
-                    this.video.setAttribute('src', this.loopURL);
-                    this.looploaded = true;
-                }
-            }
-            else if(this.distance < this.data.planewidth && this.distance < this.data.planeheight){
+            // if(!this.looploaded){
+            //     if(this.distance < this.data.triggerdistance && this.distance < this.data.triggerdistance){
+            //         console.log('loading loop..');
+            //         this.video.setAttribute('src', this.loopURL);
+            //         this.looploaded = true;
+            //     }
+            // }
+            // else if(this.distance < this.data.planewidth && this.distance < this.data.planeheight){
+            //     console.log('loading video...');
+            //     this.video.setAttribute('src', this.videoURL);
+            //     this.videoloaded = true;
+            // }
+
+            
+            if(this.distance < this.data.planewidth && this.distance < this.data.planeheight){
                 console.log('loading video...');
-                this.video.setAttribute('src', this.videoURL);
+                this.video.setAttribute('material', 'src', '#' + this.data.target);
+                this.videoSource.play();
                 this.videoloaded = true;
+
             }
 
         }
 
     }
 })
+
+AFRAME.registerComponent('hide', {
+    init: function () {
+        console.log('hiding component attached');
+        let mesh = this.el.getObject3D('mesh');
+        console.log(mesh);
+        mesh.material.color.set(0x0000ff);
+        mesh.material.colorWrite = false; // <================= new
+        mesh.renderOrder = 2;  
+    }
+});
+  
+AFRAME.registerComponent('show', {
+    init: function () {
+        console.log('occlusion-show componenent attached');
+        let mesh = this.el.getObject3D('mesh');
+        console.log(mesh);
+        mesh.renderOrder = 3;
+    }
+});
