@@ -88,6 +88,7 @@ AFRAME.registerComponent('2dvideoplayer', {
         // add the video as a video element to control playback
         this.videoSource = document.createElement('video');
         this.videoSource.id = this.data.target;
+        this.videoSource.src = './media/videos/' + this.data.target + '.mp4';
         // this.video.onloadeddata = this.onLoaded.bind(this);
         document.body.appendChild(this.videoSource);
 
