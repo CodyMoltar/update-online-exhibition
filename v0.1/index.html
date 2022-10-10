@@ -17,12 +17,14 @@
     <a-scene light="defaultLightsEnabled: false" fog="type: linear; color: #fff; far:100">
 
         <a-sky color="#ECECEC"></a-sky>
+        <a-entity light="type: ambient; color: #fff"></a-entity>
 
-        <a-entity  rotation="0 0 0" gamepad-controls="" trackpad-controls="" keyboard-controls="" touch-controls="">
+        <a-entity rotation="0 0 0" gamepad-controls="" trackpad-controls="" keyboard-controls="" touch-controls="">
             <a-entity positionlogger id="rig" camera="" position="0 1.6 0" look-controls="pointerLockEnabled: true; reverseMouseDrag: false;" rotation="" look-controls wasd-controls>
             </a-entity>
         </a-entity>
 
+        <!-- floor -->
         <a-plane 
             position="0 0 0" 
             rotation="-90 0 0" 
@@ -35,52 +37,104 @@
                 repeat: 100 100
             "
         ></a-plane>
-        <a-entity light="type: ambient; color: #fff"></a-entity>
 
+        <a-plane
+            color="red"
+            position="0 2 -5"
+            look-at-camera
+        ></a-plane>
+
+        
+        <!-- 4 video players -->
         <a-entity position="0 0 -30">
 
             <a-entity 
                 2dvideoplayer="target:wall"
                 position="-10 0 -10"
-                rotation="0 90 0"
+                rotation="0 135 0"
             ></a-entity>
 
             <a-entity 
                 2dvideoplayer="target:jelly"
                 position="-10 0 -30"
-                rotation="0 90 0"
+                rotation="0 45 0"
             ></a-entity>
 
             <a-entity 
                 2dvideoplayer="target:woman"
                 position="10 0 -10"
-                rotation="0 -90 0"
+                rotation="0 -135 0"
             ></a-entity>
 
             <a-entity 
                 2dvideoplayer="target:earth"
                 position="10 0 -30"
-                rotation="0 -90 0"
+                rotation="0 -45 0"
             ></a-entity>
 
         </a-entity>
 
-        <!-- <a-box
-            color="black"
-            position="0 1.5 -4"
-            depth="3"
-            height="3"
-            width="3"
-            show
-        ></a-box>
+        <!-- Ocluded house -->
+        <a-entity position="50 0 0">
 
-        <a-plane
-            hide
-            position="0 1.5 -2"
-            width="3"
-            height="3"
-            color="red"
-        ></a-plane> -->
+            <a-plane
+                hide
+                position="0 3 -11"
+                width="30"
+                height="20"
+                color="red"
+                material="side: double"
+            ></a-plane>
+
+            <a-plane
+                hide
+                position="0 3 11"
+                width="30"
+                height="20"
+                color="red"
+                material="side: double"
+            ></a-plane>
+
+            <a-plane
+                hide
+                position="-11 3 0"
+                rotation="0 90 0"
+                width="30"
+                height="20"
+                color="red"
+                material="side: double"
+            ></a-plane>
+
+            <a-plane
+                hide
+                position="9.6 3 0"
+                rotation="0 90 0"
+                width="30"
+                height="20"
+                color="red"
+                material="side: double"
+            ></a-plane>
+            
+
+            <!-- <a-box
+                color="gray"
+                position="0 1.5 -4"
+                depth="3"
+                height="3"
+                width="3"
+                show
+            ></a-box> -->
+
+            <a-entity
+                gltf-model="./media/3dmodels/house.glb"
+                color="blue"
+            ></a-entity>
+
+        </a-entity>
+
+       
+
+       
 
     </a-scene>
     

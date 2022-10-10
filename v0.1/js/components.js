@@ -1,6 +1,24 @@
 let cameraPosition;
 let videos;
 
+AFRAME.registerComponent('hide', {
+    init: function () {
+        console.log('hiding component attached');
+        let mesh = this.el.getObject3D('mesh');
+        mesh.material.color.set(0x0000ff);
+        mesh.material.colorWrite = false; // <================= new
+        mesh.renderOrder = 2;  
+    }
+});
+  
+AFRAME.registerComponent('show', {
+    init: function () {
+        console.log('occlusion-show componenent attached');
+        let mesh = this.el.getObject3D('mesh');
+        mesh.renderOrder = 3;
+    }
+});
+
 AFRAME.registerComponent('positionlogger', {
     init: function(){
         this.cam = document.getElementById('rig');
@@ -8,68 +26,6 @@ AFRAME.registerComponent('positionlogger', {
     },
     tick: function(){
         cameraPosition = this.cam.object3D.getWorldPosition(new THREE.Vector3())
-    }
-})
-
-AFRAME.registerComponent('videoloop', {
-    schema: {type: 'int', default: 5},
-    init: function (){
-        // Set the static image source of the plane
-        this.staticImageURL = './media/videos/' + this.el.id + ".png"
-        this.el.setAttribute('src', this.staticImageURL);
-        this.el.setAttribute('rotation', '20,0,0')
-        this.videoLoopURL = './media/videos/' + this.el.id + "-loop.mp4"
-        this.triggerDistance = 10;
-        this.loopLoaded = false;
-
-    },
-    tick: function(){
-        if(!this.loopLoaded){
-            this.videoPosition = this.el.getObject3D("mesh").getWorldPosition(new THREE.Vector3());
-            this.distance = this.videoPosition.distanceTo(cameraPosition)
-            if(this.distance < this.triggerDistance){
-                console.log("Loading loop");
-                this.el.setAttribute('src', this.videoLoopURL)
-                this.loopLoaded = true;
-            }
-        }
-    }
-});
-
-AFRAME.registerComponent('videoactivator', {
-    schema:{
-        color: {default: '#fff'},
-        target: {type: 'string', default: 'none'}
-    },
-    init: function(){
-        this.width = 2;
-        this.height = 2;
-        // this.el.setAttribute('color', this.data.color);
-        this.el.setAttribute(
-            'material', {
-                src: './media/textures/feet.png',
-                transparent: true
-            })
-        this.el.setAttribute('position', { x: 0, y: 0.01, z: 0 });
-        this.el.setAttribute('width', this.width)
-        this.el.setAttribute('height', this.height)
-        this.videoURL = './media/videos/' + this.data.target + ".mp4"
-        this.videoLoaded = false;
-
-    },
-    tick: function(){
-        if(!this.videoLoaded){
-            this.planePosition = this.el.getObject3D("mesh").getWorldPosition(new THREE.Vector3());
-            this.distance = this.planePosition.distanceTo(cameraPosition)
-            if(this.distance < this.width && this.distance < this.height){
-                for(let i = 0; i < videos.length; i++){
-                    if(videos[i].id === this.data.target){
-                        videos[i].setAttribute('src', this.videoURL);
-                    }
-                }
-                this.videoLoaded = true;
-            }
-        }
     }
 })
 
@@ -99,6 +55,7 @@ AFRAME.registerComponent('2dvideoplayer', {
         this.frame.setAttribute('rotation', { x: 20, y: 0, z: -90 });
         this.frame.setAttribute('position', { x: -4.359, y: 3, z: -0.07 });
         this.frame.setAttribute('gltf-model', 'url(./media/3dmodels/frame.glb)')
+        // this.frame.setAttribute('show', '');
 
         // this.frame = document.createElement('a-obj-model');
         // this.el.appendChild(this.frame);
@@ -172,22 +129,12 @@ AFRAME.registerComponent('2dvideoplayer', {
     }
 })
 
-AFRAME.registerComponent('hide', {
-    init: function () {
-        console.log('hiding component attached');
-        let mesh = this.el.getObject3D('mesh');
-        console.log(mesh);
-        mesh.material.color.set(0x0000ff);
-        mesh.material.colorWrite = false; // <================= new
-        mesh.renderOrder = 2;  
-    }
-});
+AFRAME.registerComponent('look-at-camera', {
+    schema: { type: 'selector' },
   
-AFRAME.registerComponent('show', {
-    init: function () {
-        console.log('occlusion-show componenent attached');
-        let mesh = this.el.getObject3D('mesh');
-        console.log(mesh);
-        mesh.renderOrder = 3;
+    init: function () {},
+  
+    tick: function () {
+      this.el.object3D.lookAt(cameraPosition)
     }
-});
+  })
