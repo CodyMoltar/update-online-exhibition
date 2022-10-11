@@ -121,7 +121,6 @@ AFRAME.registerComponent('2dvideoplayer', {
                 this.video.setAttribute('material', 'src', '#' + this.data.target);
                 this.videoSource.play();
                 this.videoloaded = true;
-
             }
 
         }
