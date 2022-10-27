@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update 2022 - Online Exhibition</title>
+
+    <link rel="stylesheet" href="./style/style.css">
+
+    <script src="./js/aframe.min.js"></script>
+    <!--<script src="./js/mouselook.js"></script>-->
+    <script src="./js/components.js"></script>
+    <script src="./js/navigation.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+   <!-- <script defer src="./js/script.js"></script>-->
+
+</head>
+<body>
+
+    <!-- -->
+    <a-scene fog="type: exponential; color: black; density: 0.02" inspector-plugin-recast renderer="antialias: true">
+
+        <script>
+            this.scene = document.querySelector("a-scene");
+            this.scene.renderer.gammaInput = true;
+            this.scene.renderer.gammaOutput = true;
+        </script>
+
+        <a-assets>
+            <img id="WallColor" src="./models/env/img/wall_ao.png">
+            <a-asset-item id="navmesh" src="./models/env/navmesh_01.obj"></a-asset-item>
+            <a-asset-item id="intro" src="./models/env/updateViz14_front.glb"></a-asset-item>
+            <a-asset-item id="introp2" src="./models/env/updateViz17_front_anim.glb"></a-asset-item>
+
+        </a-assets>
+        <!--intro-->
+
+        <a-entity id="update"
+        scale="1 1 1"
+        gltf-model="#intro"></a-entity>
+        <a-entity position="-40 -2 -5" material="fog: false" gltf-model="#introp2" animation-mixer="loop:repeat; timeScale: 1"></a-entity>
+
+        <!--exhibobjects start-->
+
+        <!--exhibobjects end-->
+
+        <a-sky color="#ECECEC"></a-sky>
+
+        <a-entity rotation="0 90 0" position="50 0 -50">
+
+            <a-entity position="0 0 -50">
+                <a-plane
+                    videoactivator="color:yellow; target:earth"
+                    position="0 0 0" 
+                    rotation="-90 0 0"
+                ></a-plane>
+                <a-video
+                    id="earth" 
+                    position="0 3 -8" 
+                    rotation="0 0 0" 
+                    width="8" 
+                    height="4.5"
+                    videoloop
+                ></a-video>
+            </a-entity>
+    
+            <a-entity
+                position="20 0 -50"
+                rotation="0 0 0"
+            >
+                <a-plane
+                    videoactivator="color:yellow; target:jelly"
+                    position="0 0 0" 
+                    rotation="-90 0 0"  
+                ></a-plane>
+                <a-video
+                    id="jelly" 
+                    position="0 3 -8" 
+                    rotation="0 0 0" 
+                    width="8" 
+                    height="4.5"
+                    videoloop
+                ></a-video>
+            </a-entity>
+    
+            <a-entity
+                position="40 0 -50"
+                rotation="0 0 0"
+            >
+                <a-plane
+                    videoactivator="color:yellow; target:woman"
+                    position="0 0 0" 
+                    rotation="-90 0 0"  
+                ></a-plane>
+                <a-video
+                    id="woman" 
+                    position="0 3 -8" 
+                    rotation="0 0 0" 
+                    width="8" 
+                    height="4.5"
+                    videoloop
+                ></a-video>
+            </a-entity>
+    
+             <a-entity
+                position="-20 0 -50"
+                rotation="0 0 0"
+            >
+                <a-plane
+                    videoactivator="color:yellow; target:wall"
+                    position="0 0 0" 
+                    rotation="-90 0 0"  
+                ></a-plane>
+                <a-video
+                    id="wall" 
+                    position="0 3 -8" 
+                    rotation="0 0 0" 
+                    width="8" 
+                    height="4.5"
+                    videoloop
+                ></a-video>
+            </a-entity>
+    
+            <a-entity
+                position="60 0 -50"
+                rotation="0 0 0"
+            >
+                <a-plane
+                    videoactivator="color:yellow; target:a"
+                    position="0 0 0" 
+                    rotation="-90 0 0"  
+                ></a-plane>
+                <a-video
+                    id="a" 
+                    position="0 3 -8" 
+                    rotation="0 0 0" 
+                    width="8" 
+                    height="4.5"
+                    videoloop
+                ></a-video>
+            </a-entity>
+
+        </a-entity>
+
+<!--Environment-->
+        <a-entity scale="1 10 1">
+            <a-entity id="door01" 
+                    obj-model="obj: url(./models/env/entrance/entrance_01_01.obj)"
+                    material="shader:flat; src:#WallColor; color: #f56e64"></a-entity>
+            <a-entity id="door01marker" 
+                    obj-model="obj: url(./models/env/entrance/e01.obj)"
+                    material="shader:flat; src:#WallColor; color: #f56e64"></a-entity>
+
+            <a-entity id="door02" 
+                    obj-model="obj: url(./models/env/entrance_02_01.obj)"
+                    material="shader:flat; src:#WallColor; color: #63ab5e"></a-entity>
+            <a-entity id="door02marker" 
+                    obj-model="obj: url(./models/env/entrance/e02.obj)"
+                    material="shader:flat; src:#WallColor; color: #63ab5e"></a-entity>
+
+            <a-entity id="door03" 
+                    obj-model="obj: url(./models/env/entrance_03_01.obj)"
+                    material="shader:flat; src:#WallColor; color: #5aacdb"></a-entity>
+            <a-entity id="door01marker" 
+                    obj-model="obj: url(./models/env/entrance/e03.obj)"
+                    material="shader:flat; src:#WallColor; color: #5aacdb"></a-entity>
+
+            <a-entity id="door04" 
+                    obj-model="obj: url(./models/env/entrance_04_01.obj)"
+                    material="shader:flat; src:#WallColor; color: #ab50a5"></a-entity>
+            <a-entity id="door01marker" 
+                    obj-model="obj: url(./models/env/entrance/e04.obj)"
+                    material="shader:flat; src:#WallColor; color: #ab50a5"></a-entity>
+
+        </a-entity>
+        
+        <a-entity id="interior"
+                    scale="1 1 1"
+                    obj-model="obj: url(./models/env/wall03.obj)"
+                    material="shader:flat; src:#WallColor; color: white"></a-entity>
+        
+                <a-entity id="wallmask"
+                    scale="1 1 1"
+                    obj-model="obj: url(./models/env/wallmask02.obj)"
+                    material="shader: flat; color: #white; side: double"></a-entity>
+        
+
+        
+        <a-plane 
+        material="shader: flat; src: ./models/env/img/ground_02.jpg; repeat: 400 400" 
+                position="-235 0 -4" rotation="-90 0 0" scale="500 500 500"></a-plane>
+        
+
+        
+        <a-entity light="type: ambient; intensity:0.1; color: #white"></a-entity>
+
+        <a-obj-model src="#navmesh" visible="false" nav-mesh position="0 0 0"></a-obj-model>
+
+        <a-entity id="entrylight" light="color: #ffffff; type: point; intensity: 5; groundColor: #000000; decay: 1.13; distance: 49.91; penumbra: 1" rotation="0 90 0" position="110 0 2.09837"></a-entity>
+        <a-entity id="entrylight2" light="color: #ffffff; type: point; intensity: 4; groundColor: #000000; decay: 1.13; distance: 49.91; penumbra: 1" rotation="0 90 0" position="160 0 2.09837"></a-entity>
+        <a-entity rotation="0 90 0" position="150 0 2" gamepad-controls="" trackpad-controls="" keyboard-controls="" touch-controls="">
+            <a-entity positionlogger id="rig" rotation="0 0 0" camera="" position="0 1.6 0" look-controls="pointerLockEnabled: true; reverseMouseDrag: false;" wasd-controls="constrainToNavMesh: true">
+            </a-entity>
+        </a-entity>
+           
+    </a-entity>
+
+
+    </a-scene>
+
+</body>
+</html>

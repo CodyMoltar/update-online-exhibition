@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPDATE online exhibition</title>
+
+    <link rel="stylesheet" href="./style/style.css">
+
+    <script src="./js/aframe.min.js"></script>
+    <script src="./js/components.js"></script>
+    <script src="./js/script.js" defer></script>
+
+</head>
+<body>
+
+    <div id="aframe-wrapper">
+
+        <a-scene embedded light="defaultLightsEnabled: false" fog="type: linear; color: #fff; far:100">
+
+            <a-assets>
+                <video id="videoId" src="./media/videos/plant.mov" muted autoplay loop="true"></video>
+              </a-assets>
+    
+            <a-sky color="#ECECEC"></a-sky>
+            <a-entity light="type: ambient; color: #fff"></a-entity>
+    
+            <a-entity rotation="0 0 0" gamepad-controls="" trackpad-controls="" keyboard-controls="" touch-controls="">
+                <a-entity positionlogger id="rig" camera="" position="0 1.6 0" look-controls="pointerLockEnabled: true; reverseMouseDrag: false;" rotation="" look-controls wasd-controls>
+                </a-entity>
+            </a-entity>
+    
+            <!-- floor -->
+            <a-plane 
+                position="0 0 0" 
+                rotation="-90 0 0" 
+                width="400" 
+                height="400" 
+                color="#fff"
+                material="
+                    src: ./media/textures/concrete/Concrete_019_BaseColorLighterer.jpg;
+                    normalMap: ./media/textures/concrete/Concrete_019_Normal.jpg;
+                    repeat: 100 100
+                "
+            ></a-plane>
+    
+            <a-plane
+                color="red"
+                position="10 2 -5"
+                look-at-camera
+            ></a-plane>
+        
+            <a-entity>
+                <a-box
+                    width="0.7"
+                    height="1.3"
+                    depth="0.7"
+                    color="lightgray"
+                    position="0 0.65 4"
+                >
+    
+                <a-video
+                    src="./media/videos/earth.mp4"
+                    position="0 1.2 0"
+                    width="1.6"
+                    height="0.9"
+                    look-at-camera
+                ></a-video>
+    
+                </a-box>
+    
+                
+    
+            </a-entity>
+            
+            <!-- 4 video players -->
+            <a-entity position="0 0 -30">
+    
+                <a-entity 
+                    2dvideoplayer="target:wall"
+                    position="-10 0 -10"
+                    rotation="0 135 0"
+                ></a-entity>
+    
+                <a-entity 
+                    2dvideoplayer="target:jelly"
+                    position="-10 0 -30"
+                    rotation="0 45 0"
+                ></a-entity>
+    
+                <a-entity 
+                    2dvideoplayer="target:woman"
+                    position="10 0 -10"
+                    rotation="0 -135 0"
+                ></a-entity>
+    
+                <a-entity 
+                    2dvideoplayer="target:earth"
+                    position="10 0 -30"
+                    rotation="0 -45 0"
+                ></a-entity>
+    
+            </a-entity>
+    
+            <!-- Ocluded house -->
+            <a-entity position="50 0 0">
+    
+                <a-plane
+                    hide
+                    position="0 3 -11"
+                    width="30"
+                    height="20"
+                    color="red"
+                    material="side: double"
+                ></a-plane>
+    
+                <a-plane
+                    hide
+                    position="0 3 11"
+                    width="30"
+                    height="20"
+                    color="red"
+                    material="side: double"
+                ></a-plane>
+    
+                <a-plane
+                    hide
+                    position="-11 3 0"
+                    rotation="0 90 0"
+                    width="30"
+                    height="20"
+                    color="red"
+                    material="side: double"
+                ></a-plane>
+    
+                <a-plane
+                    hide
+                    position="9.6 3 0"
+                    rotation="0 90 0"
+                    width="30"
+                    height="20"
+                    color="red"
+                    material="side: double"
+                ></a-plane>
+                
+    
+                <!-- <a-box
+                    color="gray"
+                    position="0 1.5 -4"
+                    depth="3"
+                    height="3"
+                    width="3"
+                    show
+                ></a-box> -->
+    
+                <a-entity
+                    gltf-model="./media/3dmodels/house.glb"
+                    color="blue"
+                ></a-entity>
+    
+            </a-entity>
+    
+            <a-obj-model
+                rotation="0 -144.956 180"
+                position="-11.465 0.010 -2.430"
+                src="./media/3dmodels/path.obj"
+                mtl="./media/3dmodels/path.mtl"
+            ></a-obj-model>
+    
+        </a-scene>
+
+    </div>
+
+    
+
+    <!-- <div id="legend-wrapper">
+        <ul id="legend-items">
+            <li data-location="10 1.6 10">place 1</li>
+            <li>place 2</li>
+            <li>place 3</li>
+        </ul>
+    </div> -->
+    
+</body>
+</html>
