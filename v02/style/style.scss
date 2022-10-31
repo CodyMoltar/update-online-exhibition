@@ -1,0 +1,50 @@
+*{
+    margin:0;
+    box-sizing: border-box;
+}
+
+html, body{
+    height:100%;
+}
+
+body{
+
+    position: relative;
+
+    #welcome-screen{
+        position: absolute;
+        width:100%;
+        height:100%;
+        // background:red;
+        z-index: 1;
+        display: none;
+        justify-content: center;
+        align-items: center;
+
+        span{
+            border:1px solid white;
+            padding:2em 2em;
+            // border-radius: 10px;
+        }
+
+        .button_hover{
+            color:white;
+            background:rgba($color: #ffffff, $alpha: 0.0);
+            transition: background-color 300ms, color 300ms;
+        }
+
+        .button_hover:hover{
+            cursor:pointer;
+            background:rgba($color: #ffffff, $alpha: 0.5);
+            color:black;
+        }
+
+    }
+
+    #aframe-container{
+        height:100%;
+        width:100%;
+        position: absolute;
+    }
+
+}
