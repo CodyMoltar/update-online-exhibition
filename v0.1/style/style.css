@@ -18,6 +18,7 @@ video {
 }
 
 #legend-wrapper {
+  display: none;
   top: 2em;
   right: 2em;
   position: absolute;
