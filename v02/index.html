@@ -72,7 +72,7 @@
                 gltf-model="#intro"
             ></a-entity> -->
 
-            <a-entity 360videoplayer></a-entity>
+            <a-entity 360videoplayer="target:test" position="0 0 0"></a-entity>
 
             <a-entity 
                 id="update-logo-model"
@@ -184,111 +184,114 @@
     
             </a-entity> -->
     
-    <!--Environment-->
-            <a-entity id="doors" scale="1 10 1">
-                <a-entity id="door01" 
-                        obj-model="obj: url(./models/env/entrance/entrance_01_01.obj)"
-                        material="shader:flat; src:#WallColor" mixin="red"></a-entity>
-    
-                <a-entity id="door02" 
-                        obj-model="obj: url(./models/env/entrance/entrance_02_01.obj)"
-                        material="shader:flat; src:#WallColor" mixin="green"></a-entity>
-               
-                <a-entity id="door03" 
-                        obj-model="obj: url(./models/env/entrance/entrance_03_01.obj)"
-                        material="shader:flat; src:#WallColor" mixin="blue"></a-entity>
-               
-                <a-entity id="door04" 
-                        obj-model="obj: url(./models/env/entrance/entrance_04_01.obj)"
-                        material="shader:flat; src:#WallColor" mixin="vio"></a-entity>  
-    
-            </a-entity> 
-                <a-entity id="text">
-                    <a-entity id="room01"
-                    text="value: Exhibit Room 01; color: #f56e64" 
-                    position="-24.78869 12.75929 27.22705" 
-                    rotation="0 179.82223104401373 0"
-                    scale="25 25 25"></a-entity>
-    
-                <a-entity id="room02"
-                    text="value: Exhibit Room 02; color: #63ab5e" 
-                    position="-40.26205 12.75929 10.58011"
-                    rotation="0 134.41647169548628 0"
-                    scale="25 25 25"></a-entity>
-    
-                <a-entity id="room03"
-                    text="value: Exhibit Room 03; color: #5aacdb" 
-                    position="-39.43071 12.75929 -11.30126"
-                    rotation="0 90.39325950660947 0"
-                    scale="25 25 25"></a-entity>
-    
-                <a-entity id="room04"
-                    text="value: Exhibit Room 04; color: #ab50a5" 
-                    position="-31.76345 12.75929 -31.61716"
-                    rotation="0 85.34607428930204 0"
-                    scale="25 25 25"></a-entity>
+            <!--Environment-->
+            <a-entity>
+
+                <a-entity id="doors" scale="1 10 1">
+                    <a-entity id="door01" 
+                            obj-model="obj: url(./models/env/entrance/entrance_01_01.obj)"
+                            material="shader:flat; src:#WallColor" mixin="red"></a-entity>
+
+                    <a-entity id="door02" 
+                            obj-model="obj: url(./models/env/entrance/entrance_02_01.obj)"
+                            material="shader:flat; src:#WallColor" mixin="green"></a-entity>
+                
+                    <a-entity id="door03" 
+                            obj-model="obj: url(./models/env/entrance/entrance_03_01.obj)"
+                            material="shader:flat; src:#WallColor" mixin="blue"></a-entity>
+                
+                    <a-entity id="door04" 
+                            obj-model="obj: url(./models/env/entrance/entrance_04_01.obj)"
+                            material="shader:flat; src:#WallColor" mixin="vio"></a-entity>  
+
+                </a-entity> 
+                    <a-entity id="text">
+                        <a-entity id="room01"
+                        text="value: Exhibit Room 01; color: #f56e64" 
+                        position="-24.78869 12.75929 27.22705" 
+                        rotation="0 179.82223104401373 0"
+                        scale="25 25 25"></a-entity>
+
+                    <a-entity id="room02"
+                        text="value: Exhibit Room 02; color: #63ab5e" 
+                        position="-40.26205 12.75929 10.58011"
+                        rotation="0 134.41647169548628 0"
+                        scale="25 25 25"></a-entity>
+
+                    <a-entity id="room03"
+                        text="value: Exhibit Room 03; color: #5aacdb" 
+                        position="-39.43071 12.75929 -11.30126"
+                        rotation="0 90.39325950660947 0"
+                        scale="25 25 25"></a-entity>
+
+                    <a-entity id="room04"
+                        text="value: Exhibit Room 04; color: #ab50a5" 
+                        position="-31.76345 12.75929 -31.61716"
+                        rotation="0 85.34607428930204 0"
+                        scale="25 25 25"></a-entity>
+                </a-entity>
+
+
+                <a-entity id="interior"
+                            scale="1 1 1"
+                            obj-model="obj: url(./models/env/wall03.obj)"
+                            material="shader:flat; src:#WallColor"></a-entity>
+                
+                        <a-entity id="wallmask"
+                            scale="1 1 1"
+                            obj-model="obj: url(./models/env/wallmask02.obj)"
+                            material="shader: flat; color: #white; side: double"></a-entity>
+
+                        <a-entity id="podest01"
+                            position="-8 0 0"
+                            scale="1 1 1"
+                            rotation="0 -30 0"
+                            obj-model="obj: url(./models/env/podest_02.obj)"
+                            material="shader:flat; src:#WallColor"></a-entity>
+
+                        <a-entity id="podest02"
+                            position="-8 0 5"
+                            scale="0.5 3 4"
+                            rotation="0 45 0"
+                            obj-model="obj: url(./models/env/podest_02.obj)"
+                            material="shader:flat; src:#WallColor"></a-entity>
+
+
+                <a-entity id="ground"
+                    scale="1 1 1"
+                    obj-model="obj: url(./models/env/ground_01.obj)"
+                    material="
+                        shader:flat;
+                        src: ./media/textures/concrete/Concrete_019_BaseColorLighterer.jpg;
+                        normalMap: ./media/textures/concrete/Concrete_019_Normal.jpg;
+                        repeat: 100 100
+                    "
+                ></a-entity>
+
+                <a-video
+                        width="20"
+                        height="10"
+                        rotation="0 0 0"
+                        position="-10.5 2 0"
+                        src="./models/env/img/wall.png"
+                        material="side:double; repeat: 1 1"
+                    ></a-video>
+                        
+
+                
+                <a-entity light="type: ambient; intensity:1; color: #white"></a-entity>
+
+                <a-obj-model class="collision" src="#navmesh" visible="false" nav-mesh position="0 0 0"></a-obj-model>
+
+                <a-entity id="entrylight" light="color: #ffffff; type: point; intensity: 5; groundColor: #000000; decay: 1.13; distance: 49.91; penumbra: 1" rotation="0 90 0" position="110 0 2.09837"></a-entity>
+                <a-entity id="entrylight2" light="color: #ffffff; type: point; intensity: 4; groundColor: #000000; decay: 1.13; distance: 49.91; penumbra: 1" rotation="0 90 0" position="160 0 2.09837"></a-entity>
+            
+            
+            
+
             </a-entity>
-    
-    
-            <a-entity id="interior"
-                        scale="1 1 1"
-                        obj-model="obj: url(./models/env/wall03.obj)"
-                        material="shader:flat; src:#WallColor"></a-entity>
-            
-                    <a-entity id="wallmask"
-                        scale="1 1 1"
-                        obj-model="obj: url(./models/env/wallmask02.obj)"
-                        material="shader: flat; color: #white; side: double"></a-entity>
-    
-                    <a-entity id="podest01"
-                        position="-8 0 0"
-                        scale="1 1 1"
-                        rotation="0 -30 0"
-                        obj-model="obj: url(./models/env/podest_02.obj)"
-                        material="shader:flat; src:#WallColor"></a-entity>
-    
-                    <a-entity id="podest02"
-                        position="-8 0 5"
-                        scale="0.5 3 4"
-                        rotation="0 45 0"
-                        obj-model="obj: url(./models/env/podest_02.obj)"
-                        material="shader:flat; src:#WallColor"></a-entity>
-    
-    
-            <a-entity id="ground"
-                scale="1 1 1"
-                obj-model="obj: url(./models/env/ground_01.obj)"
-                material="
-                    shader:flat;
-                    src: ./media/textures/concrete/Concrete_019_BaseColorLighterer.jpg;
-                    normalMap: ./media/textures/concrete/Concrete_019_Normal.jpg;
-                    repeat: 100 100
-                "
-            ></a-entity>
-
-            <a-video
-                    width="20"
-                    height="10"
-                    rotation="0 0 0"
-                    position="-10.5 2 0"
-                    src="./models/env/img/wall.png"
-                    material="side:double; repeat: 1 1"
-                ></a-video>
-                    
-    
-            
-            <a-entity light="type: ambient; intensity:1; color: #white"></a-entity>
-    
-            <a-obj-model class="collision" src="#navmesh" visible="false" nav-mesh position="0 0 0"></a-obj-model>
-    
-            <a-entity id="entrylight" light="color: #ffffff; type: point; intensity: 5; groundColor: #000000; decay: 1.13; distance: 49.91; penumbra: 1" rotation="0 90 0" position="110 0 2.09837"></a-entity>
-            <a-entity id="entrylight2" light="color: #ffffff; type: point; intensity: 4; groundColor: #000000; decay: 1.13; distance: 49.91; penumbra: 1" rotation="0 90 0" position="160 0 2.09837"></a-entity>
-           
-           
-           
-            
-
-            <a-box class="raycastable" enable-interaction="lookangle: 180; lookposition:0 0 -10" ring="color: #ffffff; radius: 1.5; width: 0.06" position="0 2 -5" material="color:red;"></a-box>
+                
+            <a-box class="raycastable" enable-interaction="lookangle: 180; lookposition:0 0 -10" ring="color: #000000s; radius: 1.5; width: 0.06" position="0 2 -5" material="color:red;"></a-box>
 
             <!-- Camera -->
             <!--start position rotation="0 90 0" position="150 -5 4"-->
@@ -322,10 +325,7 @@
 
                 <a-entity laser-controls="hand: right" daydream-controls="" gearvr-controls="" magicleap-controls="" oculus-go-controls="" oculus-touch-controls="" valve-index-controls="" vive-controls="" vive-focus-controls="" windows-motion-controls="" generic-tracked-controller-controls=""></a-entity>
 
-            </a-entity>
-               
-        </a-entity>
-    
+            </a-entity>    
     
         </a-scene>
 

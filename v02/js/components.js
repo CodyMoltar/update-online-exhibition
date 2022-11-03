@@ -128,6 +128,56 @@ AFRAME.registerComponent('2dvideoplayer', {
     }
 })
 
+AFRAME.registerComponent('360videoplayer', {
+    schema:{
+        color: {default: '#fff'},
+        target: {type: 'string', default: 'none'},
+        radius: {default: 1.65},
+        triggerdistance: {default: 20}
+    },
+    init: function(){
+
+        this.videoSource = document.createElement('video');
+        this.videoSource.id = this.data.target;
+        this.videoSource.src = './media/360videos/' + this.data.target + '.mp4';
+        document.body.appendChild(this.videoSource);
+
+        this.videoSphere = document.createElement('a-videosphere');
+        this.videoSphere.setAttribute('src', './media/360videos/' + this.data.target + '.png');
+        this.videoSphere.setAttribute('radius', this.data.radius);
+        this.videoSphere.setAttribute('position', { x: 0, y: this.data.radius, z: 0 });
+        this.videoSphere.classList.add('raycastable');
+        // this.videoSphere.setAttribute('ring', 'color', 'black');
+        this.videoSphere.setAttribute('ring', {
+            color:'gray',
+            radius: 1,
+            width: 0.2
+        })
+        // enable-interaction="lookangle: 180; lookposition:0 0 -10"
+        this.videoSphere.setAttribute('enable-interaction', {
+            lookangle: 180,
+            lookposition: '0 0 0'
+        })
+
+        this.el.appendChild(this.videoSphere);
+
+        this.videoLoaded = false;
+        this.videoPlaying = false;
+
+        console.log();
+        
+    },
+    tick: function(){
+
+        // if(!this.videoLoaded){
+        //     this.videoSpherePosition = this.videoSphere.getObject3D("mesh").getWorldPosition(new THREE.Vector3());
+        //     this.distance = this.videoSpherePosition.distanceTo(cameraPosition);
+        //     console.log(this.distance);
+        // }
+
+    }
+})
+
 AFRAME.registerComponent('look-at-camera', {
     schema: { type: 'selector' },
   

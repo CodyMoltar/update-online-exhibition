@@ -1032,6 +1032,7 @@ AFRAME.registerComponent("ring", {
       geo.rotateX(-Math.PI / 2);
   
       var position = el.getAttribute("position");
+      console.log(position);
       //console.log(geo);
       // geo.position(position.x, 0, position.z);
       //geo.setAttribute( 'position', { x: position.x, y: 0, z: position.z } );
@@ -1048,7 +1049,7 @@ AFRAME.registerComponent("ring", {
   
       this.el.addEventListener("mouseenter", function() {
         //console.log(ringMesh.scale);
-  ringMesh.position.set(position.x, 0, position.z);
+  ringMesh.position.set(position.x, 0.05, position.z);
         if (ringMesh.userData.isTweening) return;
         var tweenInflate = new TWEEN.Tween(ringMesh)
   
