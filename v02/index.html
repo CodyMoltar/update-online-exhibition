@@ -31,7 +31,7 @@
 
         <a-scene
             id="aframe-scene"
-            fog="type: exponential; color: white; density: 0"
+            fog="type: exponential; color: black; density: 0.02"
              renderer="antialias: true"
             embedded
             animation__fog="
@@ -66,11 +66,11 @@
             </a-assets>
             <!--intro-->
     
-            <!-- <a-entity
+            <a-entity
                 id="update"
                 scale="1 1 1"
                 gltf-model="#intro"
-            ></a-entity> -->
+            ></a-entity>
 
             <a-entity 360videoplayer="target:test" position="0 0 0"></a-entity>
 
@@ -82,107 +82,7 @@
                 animation-mixer="loop:repeat; timeScale: 1"
             ></a-entity>
     
-            <!--exhibobjects start-->
-    
-            <!--exhibobjects end-->
-    
             <a-sky color="#ECECEC"></a-sky>
-    
-            <!-- <a-entity id="somevideos" rotation="0 90 0" position="50 0 -50">
-    
-                <a-entity position="0 0 -50">
-                    <a-plane
-                        videoactivator="color:yellow; target:earth"
-                        position="0 0 0" 
-                        rotation="-90 0 0"
-                    ></a-plane>
-                    <a-video
-                        id="earth" 
-                        position="0 3 -8" 
-                        rotation="0 0 0" 
-                        width="8" 
-                        height="4.5"
-                        videoloop
-                    ></a-video>
-                </a-entity>
-        
-                <a-entity
-                    position="20 0 -50"
-                    rotation="0 0 0"
-                >
-                    <a-plane
-                        videoactivator="color:yellow; target:jelly"
-                        position="0 0 0" 
-                        rotation="-90 0 0"  
-                    ></a-plane>
-                    <a-video
-                        id="jelly" 
-                        position="0 3 -8" 
-                        rotation="0 0 0" 
-                        width="8" 
-                        height="4.5"
-                        videoloop
-                    ></a-video>
-                </a-entity>
-        
-                <a-entity
-                    position="40 0 -50"
-                    rotation="0 0 0"
-                >
-                    <a-plane
-                        videoactivator="color:yellow; target:woman"
-                        position="0 0 0" 
-                        rotation="-90 0 0"  
-                    ></a-plane>
-                    <a-video
-                        id="woman" 
-                        position="0 3 -8" 
-                        rotation="0 0 0" 
-                        width="8" 
-                        height="4.5"
-                        videoloop
-                    ></a-video>
-                </a-entity>
-        
-                 <a-entity
-                    position="-20 0 -50"
-                    rotation="0 0 0"
-                >
-                    <a-plane
-                        videoactivator="color:yellow; target:wall"
-                        position="0 0 0" 
-                        rotation="-90 0 0"  
-                    ></a-plane>
-                    <a-video
-                        id="wall" 
-                        position="0 3 -8" 
-                        rotation="0 0 0" 
-                        width="8" 
-                        height="4.5"
-                        videoloop
-                    ></a-video>
-                </a-entity>
-        
-                <a-entity
-                    position="60 0 -50"
-                    rotation="0 0 0"
-                >
-                    <a-plane
-                        videoactivator="color:yellow; target:a"
-                        position="0 0 0" 
-                        rotation="-90 0 0"  
-                    ></a-plane>
-                    <a-video
-                        id="a" 
-                        position="0 3 -8" 
-                        rotation="0 0 0" 
-                        width="8" 
-                        height="4.5"
-                        videoloop
-                    ></a-video>
-                </a-entity>
-    
-            </a-entity> -->
     
             <!--Environment-->
             <a-entity>
@@ -297,7 +197,7 @@
             <!--start position rotation="0 90 0" position="150 -5 4"-->
             <a-entity
                 rotation="0 90 0"
-                position="0 0 0"
+                position="150 -5 4"
                 id="cameraRig"
                 cursor-teleport="
                     cameraRig: #cameraRig;
