@@ -133,7 +133,8 @@ AFRAME.registerComponent('360videoplayer', {
         color: {default: '#fff'},
         target: {type: 'string', default: 'none'},
         radius: {default: 1.65},
-        triggerdistance: {default: 20}
+        triggerdistance: {default: 20},
+        position:{type: "vec3"}
     },
     init: function(){
 
@@ -145,15 +146,13 @@ AFRAME.registerComponent('360videoplayer', {
         this.videoSphere = document.createElement('a-videosphere');
         this.videoSphere.setAttribute('src', './media/360videos/' + this.data.target + '.png');
         this.videoSphere.setAttribute('radius', this.data.radius);
-        this.videoSphere.setAttribute('position', { x: 0, y: this.data.radius, z: 0 });
+        this.videoSphere.setAttribute('position', { x: this.data.position.x, y: this.data.radius, z: this.data.position.z });
         this.videoSphere.classList.add('raycastable');
-        // this.videoSphere.setAttribute('ring', 'color', 'black');
         this.videoSphere.setAttribute('ring', {
             color:'gray',
             radius: 1,
             width: 0.2
         })
-        // enable-interaction="lookangle: 180; lookposition:0 0 -10"
         this.videoSphere.setAttribute('enable-interaction', {
             lookangle: 180,
             lookposition: '0 0 0'
