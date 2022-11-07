@@ -20,7 +20,11 @@ function map_range(value, low1, high1, low2, high2) {
 const INTRO_ACTIVE = false;
 
 if(!INTRO_ACTIVE){
-    welcomeScreen.style.display = 'none'
+    cameraRig.setAttribute('position', { x: -14, y: 0, z: 0});
+    cameraRig.setAttribute('rotation', { x: 0, y: 90, z: 0});
+    welcomeScreen.style.display = 'none';
+    scene.setAttribute('fog', 'color', '#ebe1d5');
+    scene.setAttribute('fog', 'density', '0.01');
 }
 
 if(INTRO_ACTIVE){

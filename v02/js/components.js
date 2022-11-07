@@ -87,12 +87,15 @@ AFRAME.registerComponent('2dvideoplayer', {
         this.plane.setAttribute('height', '2');
         this.plane.setAttribute('position', { x: 0, y: 0.01, z: 5 });
         this.plane.setAttribute('rotation', '-90,0,0');
+        this.plane.s
 
         this.videoloaded = false;
         this.looploaded = false;
 
         this.videoURL = './media/videos/' + this.data.target + '.mp4'
         this.loopURL = './media/videos/' + this.data.target + '-loop.mp4'
+
+        this.getWorldPos = false;
 
     },
     tick: function(){
@@ -133,46 +136,72 @@ AFRAME.registerComponent('360videoplayer', {
         color: {default: '#fff'},
         target: {type: 'string', default: 'none'},
         radius: {default: 1.65},
-        triggerdistance: {default: 20},
-        position:{type: "vec3"}
+        position:{type: "vec3"},
+        play:{type:'boolean'},
+        cylinderheight:{default:0.2},
+        cylindercolor:{default: '#6e6256'}
     },
     init: function(){
 
         this.videoSource = document.createElement('video');
         this.videoSource.id = this.data.target;
-        this.videoSource.src = './media/360videos/' + this.data.target + '.mp4';
-        document.body.appendChild(this.videoSource);
-
+        // this.videoSource.src = './media/360videos/' + this.data.target + '.mp4';
+        this.videoSource.muted = true;
+        this.videoSource.autoplay = true;
+        
+        this.cylinder = document.createElement('a-cylinder');
+        this.cylinder.setAttribute('height', this.data.cylinderheight);
+        this.cylinder.setAttribute('position', { x: this.data.position.x, y: this.data.cylinderheight/2, z: this.data.position.z });
+        this.cylinder.setAttribute('color', this.data.cylindercolor)
+        
         this.videoSphere = document.createElement('a-videosphere');
-        this.videoSphere.setAttribute('src', './media/360videos/' + this.data.target + '.png');
+        this.videoSphere.setAttribute('src', './media/360videos/' + this.data.target + '.jpg');
         this.videoSphere.setAttribute('radius', this.data.radius);
-        this.videoSphere.setAttribute('position', { x: this.data.position.x, y: this.data.radius, z: this.data.position.z });
-        this.videoSphere.classList.add('raycastable');
-        this.videoSphere.setAttribute('ring', {
-            color:'gray',
-            radius: 1,
-            width: 0.2
-        })
-        this.videoSphere.setAttribute('enable-interaction', {
-            lookangle: 180,
-            lookposition: '0 0 0'
-        })
-
+        this.videoSphere.setAttribute('position', { x: this.data.position.x, y: this.data.radius + 0.2, z: this.data.position.z });
+        this.videoSphere.classList.add('video');
+        this.videoSphere.setAttribute("animation", {
+            property: "rotation",
+            dur: 40000,
+            loop: true,
+            easing: "linear",
+            to: "0 360 0",
+            autplay: true
+        });
+        
+        this.el.appendChild(this.cylinder);
         this.el.appendChild(this.videoSphere);
+        this.el.appendChild(this.videoSource);
 
         this.videoLoaded = false;
         this.videoPlaying = false;
 
-        console.log();
+        this.videoSphere.addEventListener('click', function(){
+            if(!this.videoLoaded){
+                console.log(this.getAttribute('position'));
+                this.setAttribute('material', 'src', './media/360videos/' + 'test' + '.mp4');
+            }
+        })
+
+        this.getWorldPos = false;
         
     },
     tick: function(){
 
-        // if(!this.videoLoaded){
-        //     this.videoSpherePosition = this.videoSphere.getObject3D("mesh").getWorldPosition(new THREE.Vector3());
-        //     this.distance = this.videoSpherePosition.distanceTo(cameraPosition);
-        //     console.log(this.distance);
-        // }
+        if(!this.getWorldPos){
+            this.worldPosition = this.cylinder.getObject3D("mesh").getWorldPosition(new THREE.Vector3());
+            // console.log(this.worldPosition);
+            this.videoSphere.setAttribute('ring', {
+                color:this.data.color,
+                radius: 1,
+                width: 0.2,
+                position: this.worldPosition.x + ' 0 ' + this.worldPosition.z
+            })
+            this.videoSphere.setAttribute('enable-interaction', {
+                lookangle: 180,
+                lookposition: this.worldPosition.x + ' ' + this.worldPosition.y + ' ' + this.worldPosition.z
+            })
+            this.getWorldPos = true;
+        }
 
     }
 })

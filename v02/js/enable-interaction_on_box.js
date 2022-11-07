@@ -922,7 +922,7 @@ AFRAME.registerComponent("enable-interaction", {
     });
 
     this.el.addEventListener("mouseup", function() {
-        console.log("click");
+        // console.log("click");
       cameraToMarker();
     });
   }
@@ -1010,9 +1010,16 @@ AFRAME.registerComponent("ring", {
       color: { default: "#ffffff" },
       radius: { default: 3 },
       width: { default: 0.5 },
+      position:{type: "vec3"}
     },
+
+    
   
     init: function() {
+
+    // console.log(this.data.position.x);
+    let x = this.data.position.x;
+    let z = this.data.position.z;
       //var camera = document.querySelector('a-entity[camera]').components.camera.camera;
       var sceneEl = document.querySelector("a-scene");
       var camera = document.getElementById("cameraRig");
@@ -1030,16 +1037,19 @@ AFRAME.registerComponent("ring", {
   
       var geo = new THREE.RingGeometry(radius - ringwidth, radius, 32, 1);
       geo.rotateX(-Math.PI / 2);
+
+      var ringMesh = new THREE.Mesh(geo, mat);
   
-      var position = el.getAttribute("position");
-      console.log(position);
+    //   var position = el.getAttribute("position");
+    //   console.log(position);
       //console.log(geo);
       // geo.position(position.x, 0, position.z);
       //geo.setAttribute( 'position', { x: position.x, y: 0, z: position.z } );
       //geo.translate(position.x, 0, position.z);
       var mat = new THREE.MeshBasicMaterial({ color: color });
+
   
-      var ringMesh = new THREE.Mesh(geo, mat);
+      
       ringMesh.scale.set(0, 0, 0);
       sceneEl.object3D.add(ringMesh);
       //ringMesh.position.set(position.x, 0, position.z);
@@ -1049,7 +1059,9 @@ AFRAME.registerComponent("ring", {
   
       this.el.addEventListener("mouseenter", function() {
         //console.log(ringMesh.scale);
-  ringMesh.position.set(position.x, 0.05, position.z);
+        ringMesh.position.set(x,0.05,z);
+        // console.log(ringMesh.position);
+        
         if (ringMesh.userData.isTweening) return;
         var tweenInflate = new TWEEN.Tween(ringMesh)
   
