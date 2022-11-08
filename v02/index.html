@@ -76,6 +76,7 @@
                     easing: easeInOutCirc;
                     startEvents: enter;
                 "
+                positionlogger
             >
 
                 <a-entity id="head" position="0 1.65 0" camera="" look-controls="reverseMouseDrag: true;" raycaster="objects: .video" cursor="rayOrigin: mouse" rotation=""></a-entity>
@@ -131,13 +132,13 @@
             </a-entity>
 
             <a-entity position="-20 0 0">
-                <a-entity 360videoplayer="target:test; position: 0 0 -2;"></a-entity>
-                <a-entity 360videoplayer="target:park; position: 0 0 2"></a-entity>
-                <!-- <a-entity 
-                    2dvideoplayer="target:wall"
+                <a-entity 360videoplayer="target:test; position: -20 0 -2;"></a-entity>
+                <a-entity 360videoplayer="target:park; position: -20 0 2"></a-entity>
+                <a-entity 
+                    2dvideoplayer="target:wall; lookangle: 0; lookposition:-29.93 1 -4.93"
                     position="-10 0 -10"
                     rotation="0 0 0"
-                ></a-entity> -->
+                ></a-entity>
             </a-entity>
             
 
