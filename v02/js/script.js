@@ -17,7 +17,7 @@ function map_range(value, low1, high1, low2, high2) {
     return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
 }
 
-const INTRO_ACTIVE = false;
+const INTRO_ACTIVE = true;
 
 if(!INTRO_ACTIVE){
     cameraRig.setAttribute('position', { x: -14, y: 0, z: 0});
