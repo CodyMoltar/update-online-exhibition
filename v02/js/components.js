@@ -24,7 +24,13 @@ AFRAME.registerComponent('positionlogger', {
         this.cam = document.getElementById('cameraRig');
     },
     tick: function(){
-        cameraPosition = this.cam.object3D.getWorldPosition(new THREE.Vector3())
+        newVector = new THREE.Vector3();
+        cameraPosition = this.cam.object3D.getWorldPosition(newVector)
+        // console.log(cameraPosition);
+        if(cameraPosition.y != 0){
+            this.cam.setAttribute('position', { x: cameraPosition.x, y: 0, z: cameraPosition.z });
+            // console.log("HELP HELP HELP");
+        };
     }
 })
 
@@ -182,7 +188,7 @@ AFRAME.registerComponent('360videoplayer', {
 
         this.videoSphere.addEventListener('click', function(){
             if(!this.videoLoaded){
-                console.log(this.getAttribute('position'));
+                // console.log(this.getAttribute('position'));
                 this.setAttribute('material', 'src', './media/360videos/' + 'test' + '.mp4');
             }
         })

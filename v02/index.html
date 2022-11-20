@@ -31,7 +31,7 @@
 
         <a-scene
             id="aframe-scene"
-            fog="type: exponential; color: #000; density: 0.02"
+            fog="type: exponential; color: #000; density: 0.00"
             renderer="antialias: true"
             embedded
             animation__fog="
@@ -64,9 +64,7 @@
                     cameraHead: #head;
                     collisionEntities: .collision
                 "
-                movement-controls="
-                    acceleration:100;
-                    constrainToNavMesh: true" 
+                 
                 touch-controls="enabled: false"
                 animation__enter="
                     property: position;
@@ -79,6 +77,8 @@
                 positionlogger
             >
 
+                <!-- <a-entity id="head" position="0 1.65 0" camera="" look-controls="reverseMouseDrag: true;" raycaster="objects: .video" cursor="rayOrigin: mouse" rotation=""></a-entity> -->
+
                 <a-entity id="head" position="0 1.65 0" camera="" look-controls="reverseMouseDrag: true;" raycaster="objects: .video" cursor="rayOrigin: mouse" rotation=""></a-entity>
                 
                 <a-entity laser-controls="hand: left" daydream-controls="" gearvr-controls="" magicleap-controls="" oculus-go-controls="" oculus-touch-controls="" valve-index-controls="" vive-controls="" vive-focus-controls="" windows-motion-controls="" generic-tracked-controller-controls=""></a-entity>
@@ -89,6 +89,7 @@
 
             <a-assets>
                 <a-asset-item id="introp2" src="./models/env/updateViz17_front_anim.glb"></a-asset-item>
+                <a-asset-item id="main-wall" src="./models/env2/wall/UpdateBackgroundWall_01.glb"></a-asset-item>
             </a-assets>
 
             <a-entity light="type: ambient; intensity:1; color: #white"></a-entity>
@@ -107,7 +108,7 @@
                 rotation="0 180 0"
                 position="164.865 -2.000 5.502"
                 material="fog: false"
-                gltf-model="#introp2"
+                gltf-model="#main-wall"
                 animation-mixer="loop:repeat; timeScale: 1"
             ></a-entity>
     
@@ -139,6 +140,10 @@
                     position="-10 0 -10"
                     rotation="0 0 0"
                 ></a-entity>
+            </a-entity>
+
+            <a-entity  position="-15 0 2" animation-mixer="clip: *;" gltf-model="url(./media/3dmodels/SWARM-GLTF.gltf)">
+                <a-box ring="position:-16.57 0 2.64" class="video" position="-2 1.5 0" width="2" height="3" depth="2" ring enable-interaction="lookangle: 315.17; lookposition:-19.85 1 5.09" visible="false"></a-box>
             </a-entity>
             
 

@@ -3,6 +3,11 @@ const welcomeScreen = document.getElementById('welcome-screen');
 const cameraRig = document.getElementById('cameraRig');
 const scene = document.getElementById('aframe-scene')
 
+//REMOVE DEFAULT CAMERA
+const wrongCamera = document.querySelectorAll('[camera]')[0];
+wrongCamera.remove();
+// console.log(wrongCamera);
+
 if (scene.hasLoaded) {
     console.log('loaded the scene');
 } else {
