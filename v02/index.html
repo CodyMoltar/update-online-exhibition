@@ -90,7 +90,43 @@
             <a-assets>
                 <a-asset-item id="introp2" src="./models/env/updateViz17_front_anim.glb"></a-asset-item>
                 <a-asset-item id="main-wall" src="./models/env2/wall/UpdateBackgroundWall_01.glb"></a-asset-item>
+                <a-asset-item id="artplustitle" src="./models/env2/text3d/Text3d_ArtP01.obj"></a-asset-item>
             </a-assets>
+
+            <!-- ART+ -->
+            <a-entity position="-56.795 0 -46.144" id="artplus_group">
+
+                <!-- BILLBOARD -->
+                <a-entity animation="property: rotation; dur: 40000; loop: true; easing: linear; to: 0 360 0; autoplay: true" rotation="0 0 0">
+                    <a-obj-model material="side:double; color:maroon"  scale="1 1 1" src="#artplustitle" position="0 20 0"></a-obj-model>
+                </a-entity>
+                
+                <!-- Swarm -->
+                <a-entity position="-15.223 0 1.743" animation-mixer="clip: *;" gltf-model="url(./media/3dmodels/artplus/SWARM-GLTF.gltf)">
+                    <a-box ring="position:-11.54 1 0.59; radius: 1; width:0.2" class="video" position="-1.647 1.5 0" width="2" height="3" depth="2" enable-interaction="lookangle: 315.17; lookposition:-19.85 1 5.09" visible="false"></a-box>
+                </a-entity>
+                
+                <!-- Potatoes -->
+                <a-entity position="-3.881 0 8.986" scale="4 4 4" gltf-model="url(./media/3dmodels/artplus/potatoes.gltf)"></a-entity>
+
+                <!-- Food pillars -->
+                <a-entity position="-10.114 0 -15.192" scale="4 4 4" animation-mixer="clip: *;" gltf-model="url(./media/3dmodels/artplus/FoodPillars-gltf.gltf)"></a-entity>
+
+                <!-- Elza Ozoloa -->
+                <a-entity position="8.971 0 -4.174" scale="1 1 1" gltf-model="url(./media/3dmodels/artplus/ozola-leftovers.glb)"></a-entity>
+
+                <!-- Demitere aquaponics -->
+                <a-entity position="-12.374 0.500 11.723" animation-mixer="clip: *;" scale="1 1 1" gltf-model="url(./media/3dmodels/artplus/demitere-aquaponics-gltf/demitere-aquaponics.gltf)">
+                    <!-- <a-box width="1" height="0.5" depth="0.5"></a-box> -->
+                </a-entity>
+
+                 <!-- Demitere clover -->
+                 <a-entity position="-4.375 0 -1.725" animation-mixer="clip: *;" scale="2 2 2" gltf-model="url(./media/3dmodels/artplus/demitere-clover.glb)"></a-entity>
+
+                  <!-- Demitere roots -->
+                  <a-entity position="4.762 0 -22.301" animation-mixer="clip: *;" scale="2 2 2" gltf-model="url(./media/3dmodels/artplus/demitere-roots.glb)"></a-entity>
+
+            </a-entity>
 
             <a-entity light="type: ambient; intensity:1; color: #white"></a-entity>
     
@@ -133,18 +169,17 @@
             </a-entity>
 
             <a-entity position="-20 0 0">
-                <a-entity 360videoplayer="target:test; position: -20 0 -2;"></a-entity>
-                <a-entity 360videoplayer="target:park; position: -20 0 2"></a-entity>
+                <!-- <a-entity 360videoplayer="target:test; position: -20 0 -2;"></a-entity>
+                <a-entity 360videoplayer="target:test; position: -40 0 -2;"></a-entity> -->
+                <!-- <a-entity 360videoplayer="target:test; position: -20 0 2"></a-entity>
                 <a-entity 
                     2dvideoplayer="target:wall; lookangle: 0; lookposition:-29.93 1 -4.93"
                     position="-10 0 -10"
                     rotation="0 0 0"
-                ></a-entity>
+                ></a-entity> -->
             </a-entity>
 
-            <a-entity  position="-15 0 2" animation-mixer="clip: *;" gltf-model="url(./media/3dmodels/SWARM-GLTF.gltf)">
-                <a-box ring="position:-16.57 0 2.64" class="video" position="-2 1.5 0" width="2" height="3" depth="2" ring enable-interaction="lookangle: 315.17; lookposition:-19.85 1 5.09" visible="false"></a-box>
-            </a-entity>
+            
             
 
         </a-scene>

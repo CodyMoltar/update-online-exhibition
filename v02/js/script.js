@@ -11,21 +11,19 @@ wrongCamera.remove();
 if (scene.hasLoaded) {
     console.log('loaded the scene');
 } else {
-    
     scene.addEventListener('loaded', function(){
         console.log('event listened: loaded');
     });
 }
 
-
 function map_range(value, low1, high1, low2, high2) {
     return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
 }
 
-const INTRO_ACTIVE = true;
+const INTRO_ACTIVE = false;
 
 if(!INTRO_ACTIVE){
-    cameraRig.setAttribute('position', { x: -14, y: 0, z: 0});
+    cameraRig.setAttribute('position', { x: 0, y: 0, z: 0});
     cameraRig.setAttribute('rotation', { x: 0, y: 90, z: 0});
     welcomeScreen.style.display = 'none';
     scene.setAttribute('fog', 'color', '#ebe1d5');
@@ -59,8 +57,6 @@ if(INTRO_ACTIVE){
                 welcomeScreen.style.display = 'none'
                 cameraRig.emit(`enter`, null, false);
                 scene.emit(`enter`, null, false);
-    
-                
     
             }
         })

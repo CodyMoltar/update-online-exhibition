@@ -1013,8 +1013,6 @@ AFRAME.registerComponent("ring", {
       position:{type: "vec3"}
     },
 
-    
-  
     init: function() {
 
     // console.log(this.data.position.x);
@@ -1048,8 +1046,6 @@ AFRAME.registerComponent("ring", {
       //geo.translate(position.x, 0, position.z);
       var mat = new THREE.MeshBasicMaterial({ color: color });
 
-  
-      
       ringMesh.scale.set(0, 0, 0);
       sceneEl.object3D.add(ringMesh);
       //ringMesh.position.set(position.x, 0, position.z);
