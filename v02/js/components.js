@@ -36,7 +36,7 @@ AFRAME.registerComponent('positionlogger', {
 
 AFRAME.registerComponent('2dvideoplayer', {
     schema:{
-        color: {default: '#fff'},
+        color: {default: '#FFF'},
         target: {type: 'string', default: 'none'},
         videowidth: {default: 8},
         videoheight: {default: 4.5},
@@ -74,7 +74,7 @@ AFRAME.registerComponent('2dvideoplayer', {
         this.frame.setAttribute('position', { x: -0, y: 0, z: -0.3});
         this.frame.setAttribute('width', this.data.videowidth + 0.5);
         this.frame.setAttribute('height', this.data.videoheight + 0.3);
-        this.frame.setAttribute('color', '#6e6256');
+        this.frame.setAttribute('color', this.data.color);
         this.frame.setAttribute('depth', 0.5);
         this.frame.classList.add('video');
         this.video.appendChild(this.frame);
@@ -83,7 +83,6 @@ AFRAME.registerComponent('2dvideoplayer', {
             lookangle: this.data.lookangle,
             lookposition: this.data.lookposition.x + ' ' + this.data.lookposition.y + ' ' + this.data.lookposition.z
         })
-
 
         // Create the plane entity
         this.plane = document.createElement('a-plane');
@@ -132,9 +131,12 @@ AFRAME.registerComponent('2dvideoplayer', {
             if(this.distance < this.data.planewidth && this.distance < this.data.planeheight){
                 console.log('loading video...');
                 this.video.setAttribute('material', 'src', '#' + this.data.target);
+                this.videoSource.loop = true;
                 this.videoSource.play();
                 this.videoloaded = true;
             }
+
+            
 
         }
 
