@@ -12,7 +12,7 @@
     <script src="./js/anime.js"></script>
     <script src="./js/aframe.min.js"></script>
     <!--<script src="./js/mouselook.js"></script>-->
-    <script src="./js/components.js"></script>
+    <!-- <script src="./js/components.js"></script> -->
     <!-- <script src="./js/enable-interaction_on_box.js"></script> -->
     <!-- <script src="./js/navigation.js"></script> -->
     <!-- <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script> -->
@@ -24,7 +24,7 @@
 
     <!--#ededed -->
 
-    <div id="welcome-screen">
+    <div style="display:none" id="welcome-screen">
         <span class="button_hover" id="enter-button">Enter</span>
     </div>
 
@@ -32,7 +32,7 @@
 
         <a-scene
             id="aframe-scene"
-            fog="type: exponential; color: #000; density: 0.00"
+            fog="type: exponential; color: #ebe1d5; density: 0.01"
             renderer="antialias: true"
             embedded
             animation__fog="
@@ -56,8 +56,7 @@
             <!-- 
                 Camera
             -->
-            <a-entity
-                movement-controls 
+            <!-- <a-entity
                 rotation="0 90 0"
                 position="143.42 -3 4.16"
                 id="cameraRig"
@@ -85,8 +84,13 @@
 
                 <a-entity laser-controls="hand: right" daydream-controls="" gearvr-controls="" magicleap-controls="" oculus-go-controls="" oculus-touch-controls="" valve-index-controls="" vive-controls="" vive-focus-controls="" windows-motion-controls="" generic-tracked-controller-controls=""></a-entity>
 
-            </a-entity>
+            </a-entity> -->
 
+            <a-entity id="cameraRig" cursor-teleport="cameraRig: #cameraRig; cameraHead: #head; collisionEntities: .collision" movement-controls="acceleration:100; constrainToNavMesh: true" touch-controls="enabled: false" rotation="" gamepad-controls="" trackpad-controls="" keyboard-controls="">
+                <a-entity id="head" position="0 1.65 0" camera="" look-controls="reverseMouseDrag: true;" raycaster="objects: .clickable, .artwork, .portal, .raycastable, .video" cursor="rayOrigin: mouse" rotation=""></a-entity>  
+                <a-entity laser-controls="hand: left" daydream-controls="" gearvr-controls="" magicleap-controls="" oculus-go-controls="" oculus-touch-controls="" valve-index-controls="" vive-controls="" vive-focus-controls="" windows-motion-controls="" generic-tracked-controller-controls=""></a-entity>
+                <a-entity laser-controls="hand: right" daydream-controls="" gearvr-controls="" magicleap-controls="" oculus-go-controls="" oculus-touch-controls="" valve-index-controls="" vive-controls="" vive-focus-controls="" windows-motion-controls="" generic-tracked-controller-controls=""></a-entity>
+            </a-entity>
 
             <a-assets>
                 <a-asset-item id="introp2" src="./models/env/updateViz17_front_anim.glb"></a-asset-item>
@@ -150,7 +154,7 @@
                 
             </a-entity>
 
-            <!-- WORKSHOPS -->
+            <!-- MASTERCLASSES -->
             <a-entity position="0 0 0" id="masterclasses_group">
 
                 <!-- BILLBOARD -->
@@ -159,7 +163,6 @@
                 </a-entity>
 
             </a-entity>
-
 
             <a-entity light="type: ambient; intensity:1; color: #white"></a-entity>
     
