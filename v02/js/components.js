@@ -50,8 +50,8 @@ AFRAME.registerComponent('2dvideoplayer', {
 
         // add the video as a video element to control playback
         this.videoSource = document.createElement('video');
-        this.videoSource.muted = true;
-        this.videoSource.autoplay = true;
+        this.videoSource.muted = false;
+        this.videoSource.autoplay = false;
         this.videoSource.id = this.data.target;
         this.videoSource.src = './media/videos/' + this.data.target + '.mp4';
         // this.video.onloadeddata = this.onLoaded.bind(this);
@@ -85,50 +85,52 @@ AFRAME.registerComponent('2dvideoplayer', {
         })
 
         // Create the plane entity
-        this.plane = document.createElement('a-plane');
-        this.el.appendChild(this.plane);
+        this.plane1 = document.createElement('a-plane');
+        this.el.appendChild(this.plane1);
         // Set the default image source, widht, height, position and rotation
-        this.plane.setAttribute(
+        // this.plane1.setAttribute(
+        //     'material', {
+        //         src: './media/textures/feet.png',
+        //         transparent: true
+        //     })
+        this.plane1.setAttribute(
             'material', {
-                src: './media/textures/feet.png',
-                transparent: true
+                color: 'maroon'
             })
-        this.plane.setAttribute('width', '2');
-        this.plane.setAttribute('height', '2');
-        this.plane.setAttribute('position', { x: 0, y: 0.01, z: 5 });
-        this.plane.setAttribute('rotation', '-90,0,0');
+        this.plane1.setAttribute('width', '2');
+        this.plane1.setAttribute('height', '2');
+        this.plane1.setAttribute('position', { x: 0, y: 0.01, z: 5 });
+        this.plane1.setAttribute('rotation', '-90,0,45');
 
         this.videoURL = './media/videos/' + this.data.target + '.mp4'
         this.loopURL = './media/videos/' + this.data.target + '-loop.mp4'
 
         this.videoloaded = false;
-        this.looploaded = false;
+        
 
         this.ringAdded = false;
 
     },
     tick: function(){
 
+        this.planePosition = this.plane1.getObject3D("mesh").getWorldPosition(new THREE.Vector3());
+        this.distance = this.planePosition.distanceTo(cameraPosition);
+
+        if(!this.ringAdded){
+
+            this.frame.setAttribute('ring', {
+                color:'#fff',
+                radius: 0.5,
+                width: 0.2,
+                position: this.planePosition.x + ' 0.05 ' + this.planePosition.z
+            })
+            
+            this.ringAdded = true;
+        }
+
+        if(this.distance < this.data.planewidth && this.distance < this.data.planeheight){
         
-
-        if(!this.videoloaded){
-
-            this.planePosition = this.plane.getObject3D("mesh").getWorldPosition(new THREE.Vector3());
-            this.distance = this.planePosition.distanceTo(cameraPosition);
-
-            if(!this.ringAdded){
-
-                this.frame.setAttribute('ring', {
-                    color:'#fff',
-                    radius: 0.5,
-                    width: 0.2,
-                    position: this.planePosition.x + ' 0.05 ' + this.planePosition.z
-                })
-                
-                this.ringAdded = true;
-            }
-
-            if(this.distance < this.data.planewidth && this.distance < this.data.planeheight){
+            if(!this.videoloaded){
                 console.log('loading video...');
                 this.video.setAttribute('material', 'src', '#' + this.data.target);
                 this.videoSource.loop = true;
@@ -136,11 +138,42 @@ AFRAME.registerComponent('2dvideoplayer', {
                 this.videoloaded = true;
             }
 
+            if(!this.videoPlaying){
+                this.videoSource.play();
+                this.videoPlaying = true;
+            }
             
+        }
+        else{
+            
+            if(this.videoPlaying){
+                this.videoSource.pause();
+                this.videoPlaying = false;
+            }
 
         }
 
     }
+})
+
+AFRAME.registerComponent('ambisonics', {
+    schema: {
+        target: {type: 'string', default: 'none'}
+    },
+
+    init: function(){
+        // create the speakers
+
+        this.speaker = document.createElement('a-box');
+        this.speaker.setAttribute('position', { x: 3, y: 0, z: 3});
+        this.speaker.setAttribute('width', {});
+
+    },
+
+    tick: function(){
+
+    }
+
 })
 
 AFRAME.registerComponent('360videoplayer', {

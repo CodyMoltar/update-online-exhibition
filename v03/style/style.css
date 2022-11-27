@@ -1,0 +1,43 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  position: relative;
+}
+body #welcome-screen {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body #welcome-screen span {
+  border: 1px solid white;
+  padding: 2em 2em;
+}
+body #welcome-screen .button_hover {
+  color: white;
+  background: rgba(255, 255, 255, 0);
+  transition: background-color 300ms, color 300ms;
+}
+body #welcome-screen .button_hover:hover {
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.5);
+  color: black;
+}
+body #aframe-container {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+body video {
+  display: none;
+}/*# sourceMappingURL=style.css.map */

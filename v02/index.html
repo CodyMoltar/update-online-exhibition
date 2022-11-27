@@ -94,7 +94,7 @@
             </a-assets>
 
             <!-- ART+ -->
-            <a-entity position="-129.756 0 -52.229" id="artplus_group">
+            <a-entity position="-59.172 0 -42.780" id="artplus_group">
 
                 <!-- BILLBOARD -->
                 <a-entity animation="property: rotation; dur: 40000; loop: true; easing: linear; to: 0 360 0; autoplay: true" rotation="0 0 0">
@@ -116,7 +116,7 @@
                 <a-entity position="8.971 0 -4.174" scale="1 1 1" gltf-model="url(./media/3dmodels/artplus/ozola-leftovers.glb)"></a-entity>
 
                 <!-- Demitere aquaponics -->
-                <a-entity position="-12.374 0.500 11.723" animation-mixer="clip: *;" scale="1 1 1" gltf-model="url(./media/3dmodels/artplus/demitere-aquaponics-gltf/demitere-aquaponics.gltf)">
+                <a-entity position="-9.845 0.500 -8.354" animation-mixer="clip: *;" scale="1 1 1" gltf-model="url(./media/3dmodels/artplus/demitere-aquaponics-gltf/demitere-aquaponics.gltf)">
                     <!-- <a-box width="1" height="0.5" depth="0.5"></a-box> -->
                 </a-entity>
 
@@ -129,34 +129,28 @@
             </a-entity>
 
             <!-- WORKSHOPS -->
-            <a-entity position="-111.638 0 48.624" id="workshops_group">
+            <a-entity position="-83.156 0 6.735" id="workshops_group">
 
                 <!-- BILLBOARD -->
                 <a-entity animation="property: rotation; dur: 40000; loop: true; easing: linear; to: 0 360 0; autoplay: true" rotation="0 0 0">
                     <a-obj-model material="side:double; color:maroon"  scale="1 1 1" src="./models/env2/text3d/Text3d_Workshops01.obj" position="0 20 0"></a-obj-model>
                 </a-entity>
 
-                <a-entity 2dvideoplayer="target:wall; lookangle: 0; lookposition:-29.93 1 -4.93" position="0 0 -10" rotation="0 0 0" ></a-entity> -->
+                <a-entity 2dvideoplayer="target:brekte; lookangle: 0; lookposition:-29.93 1 -4.93" position="0 0 -10" rotation="0 0 0" ></a-entity> -->
 
-                <a-entity 2dvideoplayer="target:jelly; lookangle: 0; lookposition:-29.93 1 -4.93" position="-10 0 -10" rotation="0 0 0" ></a-entity> -->
-
-                <a-entity 2dvideoplayer="target:earth; lookangle: 0; lookposition:-29.93 1 -4.93" position="-20 0 -10" rotation="0 0 0" ></a-entity> -->
-
-                <a-entity rotation="0 180 0" 2dvideoplayer="target:wall; lookangle: 0; lookposition:-29.93 1 -4.93" position="0 0 10"></a-entity>
-
-                <a-entity rotation="0 180 0" 2dvideoplayer="target:jelly; lookangle: 0; lookposition:-29.93 1 -4.93" position="-10 0 10" ></a-entity>
-
-                <a-entity rotation="0 180 0" 2dvideoplayer="target:earth; lookangle: 0; lookposition:-29.93 1 -4.93" position="-20 0 10"></a-entity>
-                
             </a-entity>
 
-            <!-- WORKSHOPS -->
+            <!-- MASTERCLASSES -->
             <a-entity position="0 0 0" id="masterclasses_group">
 
                 <!-- BILLBOARD -->
                 <a-entity animation="property: rotation; dur: 40000; loop: true; easing: linear; to: 0 360 0; autoplay: true" rotation="0 0 0">
                     <a-obj-model material="side:double; color:maroon"  scale="1 1 1" src="./models/env2/text3d/Text3d_MstrClss01.obj" position="0 20 0"></a-obj-model>
                 </a-entity>
+
+                <a-entity 2dvideoplayer="target:horror; lookangle: 0; lookposition:-29.93 1 -4.93" position="0 0 -10" rotation="0 0 0" ></a-entity> 
+                <a-entity 2dvideoplayer="target:abols; lookangle: 0; lookposition:-29.93 1 -4.93" position="10 0 -10" rotation="0 0 0" ></a-entity>
+                <a-entity 2dvideoplayer="target:touch; lookangle: 0; lookposition:-29.93 1 -4.93" position="0 0 10" rotation="0 180 0" ></a-entity> 
 
             </a-entity>
 
@@ -165,7 +159,7 @@
     
             <a-sky color="#ffffff"></a-sky>
 
-            <a-entity 
+            <!-- <a-entity 
                 id="update-logo-model-front"
                 position="-40 -2 -5"
                 material="fog: false"
@@ -179,19 +173,19 @@
                 material="fog: false"
                 gltf-model="#main-wall"
                 animation-mixer="loop:repeat; timeScale: 1"
-            ></a-entity>
+            ></a-entity> -->
     
     
             <!--Environment-->
             <a-entity>
 
                 <a-video
-                    width="284.110"
-                    height="171.000"
+                    width="500"
+                    height="500"
                     rotation="-90 0 0"
                     position="-107.280 0 0"
-                    src="./models/env/img/ground_02.jpg"
-                    material="side:double; repeat: 100 100"
+                    src="./models/env/img/ground_50.png"
+                    material="side:double; repeat: 250 250"
                 ></a-video>
 
                 <a-box class="collision" position="-107.280 -.5 0" depth="171" width="284" material="color:red;" visible="false"></a-box>
